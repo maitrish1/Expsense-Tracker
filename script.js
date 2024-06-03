@@ -5,16 +5,16 @@ function handleSubmit(event) {
     event.preventDefault();
 
     const form = event.target;
-    const amount = form.querySelector('input[name="amount"]').value;
-    const desc = form.querySelector('input[name="desc"]').value;
-    const category = form.querySelector('select[name="category"]').value;
+    const amount = document.getElementById('amount');
+    const desc = document.getElementById('desc');
+    const category = document.getElementById('category');
 
     let detailsArray = JSON.parse(localStorage.getItem('details')) || [];
 
     let details = {
-        amount: amount,
-        desc: desc,
-        category: category
+        amount: amount.value,
+        desc: desc.value,
+        category: category.value
     };
 
     if (isEditing) {
@@ -69,10 +69,9 @@ function deleteItem(index) {
 }
 
 function editItem(index, detail) {
-    const form = document.getElementById('form');
-    form.querySelector('input[name="amount"]').value = detail.amount;
-    form.querySelector('input[name="desc"]').value = detail.desc;
-    form.querySelector('select[name="category"]').value = detail.category;
+    document.getElementById('amount').value = detail.amount;
+    document.getElementById('desc').value = detail.desc;
+    document.getElementById('category').value = detail.category;
     isEditing = true;
     editIndex = index;
 }
